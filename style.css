@@ -1019,6 +1019,30 @@ html {
   font-weight: 600;
 }
 
+#phone-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ef3b3a;
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 10px 22px;
+  border-radius: 50px;
+  text-decoration: none;
+  margin: 6px 0;
+  transition: background 0.2s;
+}
+
+#phone-link::before {
+  content: "📞";
+  font-size: 15px;
+}
+
+#phone-link:hover {
+  background: #c92e2e;
+}
+
 .footer-socials {
   display: flex;
   align-items: center;
