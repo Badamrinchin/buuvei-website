@@ -383,57 +383,36 @@
 
   function setupMobilePanelCycle() {
     if (window.innerWidth > 768) return;
-    const panels = Array.from(document.querySelectorAll('#hero-strip .panel'));
+    const heroStrip = document.getElementById('hero-strip');
+    if (!heroStrip) return;
+    const panels = Array.from(heroStrip.querySelectorAll('.panel'));
     if (panels.length < 4) return;
 
     const groupSize = 3;
     const totalGroups = Math.ceil(panels.length / groupSize);
     let current = 0;
-    const fadeDuration = 400;
-    const staggerDelay = 150;
-    const holdDuration = 3000;
+
+    // Strip-г sliding container болгох
+    heroStrip.style.gridTemplateColumns = 'repeat(' + panels.length + ', 1fr)';
+    heroStrip.style.width = (panels.length / groupSize * 100) + '%';
+    heroStrip.style.transition = 'transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)';
+    heroStrip.style.transform = 'translateX(0)';
+
+    // Эх container overflow хаах
+    const heroEl = heroStrip.parentElement;
+    heroEl.style.overflow = 'hidden';
+    heroEl.style.position = 'relative';
 
     panels.forEach(function(p) {
-      p.style.transition = 'opacity ' + (fadeDuration / 1000) + 's ease';
-      p.style.opacity = '0';
-      p.style.display = 'none';
+      p.style.display = '';
+      p.style.opacity = '1';
     });
 
-    function getGroup(index) {
-      const start = index * groupSize;
-      return panels.slice(start, start + groupSize);
-    }
-
-    function fadeInGroup(group, done) {
-      group.forEach(function(p, i) {
-        p.style.display = '';
-        setTimeout(function() {
-          p.style.opacity = '1';
-        }, 10 + i * staggerDelay);
-      });
-      setTimeout(done, 10 + (group.length - 1) * staggerDelay + fadeDuration);
-    }
-
-    function fadeOutGroup(group, done) {
-      group.forEach(function(p, i) {
-        setTimeout(function() {
-          p.style.opacity = '0';
-          setTimeout(function() { p.style.display = 'none'; }, fadeDuration);
-        }, i * staggerDelay);
-      });
-      setTimeout(done, (group.length - 1) * staggerDelay + fadeDuration);
-    }
-
-    fadeInGroup(getGroup(0), function() {});
-
     setInterval(function() {
-      var outGroup = getGroup(current);
       current = (current + 1) % totalGroups;
-      var inGroup = getGroup(current);
-      fadeOutGroup(outGroup, function() {
-        fadeInGroup(inGroup, function() {});
-      });
-    }, holdDuration);
+      const offset = -(current * (100 / totalGroups));
+      heroStrip.style.transform = 'translateX(' + offset + '%)';
+    }, 3000);
   }
 
   function setupCardAnimation() {
