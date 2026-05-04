@@ -390,10 +390,20 @@
     let current = 0;
     const totalGroups = Math.ceil(panels.length / groupSize);
 
+    panels.forEach(function(p) {
+      p.style.transition = 'opacity 0.6s ease';
+    });
+
     function showGroup(groupIndex) {
       panels.forEach(function(p, i) {
         const inGroup = i >= groupIndex * groupSize && i < (groupIndex + 1) * groupSize;
-        p.style.display = inGroup ? '' : 'none';
+        if (inGroup) {
+          p.style.display = '';
+          setTimeout(function() { p.style.opacity = '1'; }, 10);
+        } else {
+          p.style.opacity = '0';
+          setTimeout(function() { p.style.display = 'none'; }, 600);
+        }
       });
     }
 
