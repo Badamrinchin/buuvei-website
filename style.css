@@ -1259,8 +1259,12 @@ html {
   }
 
   .hero-strip {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr;
+  }
+
+  .panel-6 {
+    display: none;
   }
 
   .hero-content {
