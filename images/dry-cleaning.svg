@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Хуурай хими цэвэрлэгээ</title>
+  <desc id="desc">Хуурай хими цэвэрлэгээний үйлчилгээний дүрслэл</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f7efe3" />
+      <stop offset="100%" stop-color="#eedcc4" />
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#f7f0e4" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="700" fill="url(#bg)" />
+  <g opacity="0.18" fill="#8f7a60">
+    <circle cx="120" cy="110" r="38" />
+    <circle cx="1060" cy="120" r="30" />
+    <circle cx="980" cy="600" r="44" />
+  </g>
+
+  <rect x="140" y="130" width="920" height="440" rx="28" fill="url(#card)" stroke="#d7c3a7" stroke-width="4" />
+
+  <g transform="translate(210 200)">
+    <path d="M220 20c36 0 66 30 66 66v40h-32V88c0-18-14-32-32-32h-6c-18 0-32 14-32 32v38h-32V86c0-36 30-66 66-66h2z" fill="#c79f72" />
+    <path d="M110 180h250" stroke="#7e6444" stroke-width="12" stroke-linecap="round" />
+    <path d="M130 180c14 44 56 76 105 76 50 0 92-32 106-76" fill="none" stroke="#7e6444" stroke-width="12" stroke-linecap="round" />
+    <rect x="72" y="126" width="328" height="70" rx="14" fill="#f4e8d7" stroke="#c7ad89" stroke-width="4" />
+    <text x="236" y="170" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="34" fill="#5a4935" font-weight="700">DRY CLEAN</text>
+  </g>
+
+  <g transform="translate(770 250)">
+    <rect x="0" y="0" width="160" height="230" rx="20" fill="#dbc2a0" stroke="#8a6b45" stroke-width="4" />
+    <rect x="40" y="-36" width="80" height="42" rx="12" fill="#8a6b45" />
+    <rect x="58" y="-58" width="44" height="24" rx="10" fill="#b89166" />
+    <circle cx="80" cy="90" r="36" fill="#f5ecdf" stroke="#9d8058" stroke-width="4" />
+    <path d="M80 58v64M48 90h64" stroke="#9d8058" stroke-width="4" />
+    <text x="80" y="192" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="28" fill="#5a4935" font-weight="700">20%</text>
+  </g>
+
+  <text x="600" y="625" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="38" fill="#5d4a35" font-weight="700">ХУУРАЙ ХИМИ ЦЭВЭРЛЭГЭЭ</text>
+</svg>

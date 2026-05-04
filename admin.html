@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="admin.css?v=20260408-1">
+</head>
+<body>
+  <main class="admin-wrap">
+    <section id="login-view" class="card auth-card">
+      <h1>CMS Admin</h1>
+      <p>Supabase admin нэвтрэлтээр контент удирдана.</p>
+      <form id="login-form" class="form-grid">
+        <label>Email
+          <input id="email" type="email" required>
+        </label>
+        <label>Password
+          <input id="password" type="password" required>
+        </label>
+        <button type="submit">Нэвтрэх</button>
+      </form>
+      <p class="hint">config.js дээр Supabase түлхүүрээ тохируулна.</p>
+    </section>
+
+    <section id="dashboard-view" class="hidden">
+      <header class="dash-header">
+        <h1>Сайтын удирдлага</h1>
+        <div class="header-actions">
+          <a href="index.html" class="ghost-btn">Сайт харах</a>
+          <button id="logout-btn" class="ghost-btn" type="button">Гарах</button>
+        </div>
+      </header>
+
+      <p id="status-msg" class="status-msg hidden" role="status" aria-live="polite"></p>
+
+      <section class="card">
+        <h2>Hero Panels (5 зураг)</h2>
+        <form id="hero-form" class="form-grid">
+          <label>Panel 1 URL<input name="panel1" required></label>
+          <label>Panel 2 URL<input name="panel2" required></label>
+          <label>Panel 3 URL<input name="panel3" required></label>
+          <label>Panel 4 URL<input name="panel4" required></label>
+          <label>Panel 5 URL<input name="panel5" required></label>
+          <button type="submit">Hero хадгалах</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <div class="section-head">
+          <h2>Бүтээгдэхүүн</h2>
+          <button id="new-product" class="ghost-btn" type="button">Шинэ</button>
+        </div>
+        <div class="tools-row">
+          <input id="product-search" type="search" placeholder="Бүтээгдэхүүн хайх...">
+          <select id="product-filter-active" aria-label="Бүтээгдэхүүний төлөв шүүх">
+            <option value="all">Бүгд</option>
+            <option value="active">Идэвхтэй</option>
+            <option value="inactive">Идэвхгүй</option>
+          </select>
+        </div>
+        <form id="product-form" class="form-grid compact">
+          <input type="hidden" id="product-id">
+          <label>Нэр<input id="product-title" required></label>
+          <label>Зургийн URL<input id="product-image" required></label>
+          <img id="product-image-preview" class="thumb-preview hidden" alt="Бүтээгдэхүүний зураг preview">
+          <label>Badge<input id="product-badge"></label>
+          <label>Дараалал<input id="product-order" type="number" min="1" value="1" required></label>
+          <label class="check"><input id="product-active" type="checkbox" checked> Идэвхтэй</label>
+          <div class="row-actions">
+            <button type="submit">Хадгалах</button>
+            <button id="delete-product" type="button" class="danger">Устгах</button>
+          </div>
+        </form>
+        <p class="hint">Үнэ, хэмжээ, өнгө, хээ (patterns), bullet (item_bullet1-4) мэдээлэл нь showcase бараанууд дээр product-data.js-ээс уншигдана (useShowcase: true; жишээ нь Буйдангийн бүтээлэг 180*60, 240*60, Урд суудлын бүрээс, Нэхий олбог). Bullet нь 2-4 мөр байж болно.</p>
+        <p class="hint"><strong>Буйдангийн бүтээлэг 180*60см</strong> дээрх "3 нэхий холбосон загвар" тайлбарыг "2 нэхий холбосон загвар" болгож шинэчилсэн.</p>
+        <p class="hint"><strong>Буйдангийн бүтээлэг</strong> 180*60 болон 240*60 дээр өнгөний сонголтыг дугуй image-swatch загвараар (white/beige/grey/brown/green) ижилчилсэн.</p>
+        <p class="hint"><strong>Буйдангийн бүтээлэг 180*60см</strong> үндсэн зураг болон gallery-г <strong>images/18060/</strong> хавтасны зурагуудаар (18060white.jpg, 18060brown.jpg) сольсон.</p>
+        <p class="hint"><strong>Буйдангийн бүтээлэг 240*60см</strong> gallery-оос <strong>images/180140.jpg</strong> болон <strong>images/grey.jpg</strong> зургуудыг хассан.</p>
+        <p class="hint"><strong>Буйдангийн бүтээлэг</strong> хуудсанд хээний сонголт pill загвараар нэмсэн: Буга, Янгир, Хонь, Чоно, Үнэг, Өлзий хээ.</p>
+        <p class="hint"><strong>Буйдангийн бүтээлэг-Шоотой</strong> мэдээлэл шинэчлэгдсэн: хүссэн хэмжээ (хамгийн том 200*200см), 1мкв=360,000₮, стандарт 180*60см=380,000₮, бэлэн загваруудын мэдээлэл.</p>
+        <p class="hint"><strong>Буйдангийн бүтээлэг-Шоотой</strong> дээрх "Хэмжээ" сонголтын блокийг хэрэглэгчийн хуудсаас нуусан (sizes талбарыг хассан).</p>
+        <p class="hint"><strong>Үхрийн хөм</strong> хэсгээс "Жижиг хэмжээтэй үхрийн хөм" карточкийг хассан.</p>
+        <p class="hint"><strong>Үхрийн хөм</strong> зураг шинэчлэлт: Дундаж item-д cow-hide + cowhide1 (1),(2); Том item-д cowhide1 (3),(4) зургуудыг холбосон.</p>
+        <p class="hint"><strong>Үхрийн хөм</strong> дэлгэрэнгүй хуудсанд дундаж/том item-уудыг showcase горимоор нээж, gallery-н бусад зургуудыг thumbnail-аар харагддаг болгосон.</p>
+        <p class="hint"><strong>Дундаж хэмжээтэй үхрийн хөм</strong> дээр үнэ 390,000₮, дундаж хэмжээ 170*150см, мөн чийг/үнэр/эвхэж авч явах/жин 3-5кг мэдээллийг нэмсэн.</p>
+        <p class="hint"><strong>Том хэмжээтэй үхрийн хөм</strong> дээр "эвхэж авч явах боломжтой" болон "жин 4-5кг" мэдээллийг нэмсэн.</p>
+        <p class="hint"><strong>Урд суудлын бүрээс</strong> gallery-оос <strong>images/18060.png</strong>, <strong>images/grey.jpg</strong>-г хасч <strong>images/Frontcarseatgray.jpg</strong> зураг нэмсэн.</p>
+        <p class="hint"><strong>Машины суудлын бүрээс</strong> хэсгээс <strong>Толгойн түшлэгтэй иж бүрдэл</strong> карточкийг хассан.</p>
+        <p class="hint"><strong>Урд суудлын бүрээс</strong> өнгөний сонголтод <strong>Саарал</strong> өнгө нэмсэн.</p>
+        <p class="hint"><strong>Арын суудлын бүрээс</strong> дээр үнэ 150,000₮, хэмжээ 140*60см, мөн 4 bullet тайлбарыг нэмсэн.</p>
+        <p class="hint"><strong>Бэлгийн багц</strong> хэсгээс <strong>Сонгодог бэлгийн багц</strong> болон <strong>Премиум бэлгийн багц</strong> карточкуудыг хассан.</p>
+        <p class="hint"><strong>Монгол бэлэг</strong> багцын бүрэлдэхүүнд тоо ширхэгийн формат оруулсан: Нэхий олбог 90*60см - 1ш, Дүүрэн таваг 14см диаметр - 1ш, Шимийн охь /Хос тагштай/ - 1ш (багцын үнэ 284800₮ хэвээр).</p>
+        <p class="hint"><strong>Аксессуар</strong> хэсэгт <strong>Авто машины чимэглэл</strong> шинэ бүтээгдэхүүн нэмсэн (зураг: <strong>images/ongi.jpg</strong>, үнэ: 11,000₮, Онги тамганы тайлбар болон Эзэн хааны төрийн тамганы дардас тексттэй).</p>
+        <p class="hint"><strong>Авто машины чимэглэл</strong> дээр Онги тамганы эхний тайлбарыг таны өгсөн форматаар шинэчилсэн: "Энэ хааны онги тамга: ... газар тэнгэрийг холбосон хүн гэсэн утгатай."</p>
+        <p id="product-summary" class="summary-text"></p>
+        <div id="product-list" class="list"></div>
+      </section>
+
+      <section class="card">
+        <div class="section-head">
+          <h2>Сүүлийн мэдээ</h2>
+          <button id="new-news" class="ghost-btn" type="button">Шинэ</button>
+        </div>
+        <div class="tools-row">
+          <input id="news-search" type="search" placeholder="Мэдээ хайх...">
+          <select id="news-filter-active" aria-label="Мэдээний төлөв шүүх">
+            <option value="all">Бүгд</option>
+            <option value="active">Идэвхтэй</option>
+            <option value="inactive">Идэвхгүй</option>
+          </select>
+        </div>
+        <form id="news-form" class="form-grid compact">
+          <input type="hidden" id="news-id">
+          <label>Гарчиг<input id="news-title" required></label>
+          <label>Зургийн URL<input id="news-image"></label>
+          <img id="news-image-preview" class="thumb-preview hidden" alt="Мэдээний зураг preview">
+          <label>Огноо текст<input id="news-date" placeholder="2026.04.08"></label>
+          <label>Товч текст<textarea id="news-summary" rows="3"></textarea></label>
+          <label>Линк<input id="news-link" value="#"></label>
+          <label>Дараалал<input id="news-order" type="number" min="1" value="1" required></label>
+          <label class="check"><input id="news-active" type="checkbox" checked> Идэвхтэй</label>
+          <div class="row-actions">
+            <button type="submit">Хадгалах</button>
+            <button id="delete-news" type="button" class="danger">Устгах</button>
+          </div>
+        </form>
+        <p class="hint">"Хонины нэхийний ач тус" мэдээний дэлгэрэнгүй хуудас: <a href="news-sheepskin-benefits.html" target="_blank" rel="noopener noreferrer">news-sheepskin-benefits.html</a> (зураг: images/newborn.jpg)</p>
+        <p class="hint">"Шинэ коллекц танилцуулга" хуудас: <a href="news-new-collection.html" target="_blank" rel="noopener noreferrer">news-new-collection.html</a></p>
+        <p class="hint">"Интерьер тренд 2026" хуудас: <a href="news-interior-trend-2026.html" target="_blank" rel="noopener noreferrer">news-interior-trend-2026.html</a></p>
+        <p class="hint">Нүүр хуудасны мэдээ хэсгээс <strong>Шинэ коллекц танилцуулга</strong> карточкийг устгасан.</p>
+        <p class="hint">Нүүр хуудасны мэдээ хэсгээс <strong>Интерьер тренд 2026</strong> карточкийг устгасан.</p>
+        <p class="hint">Сүүлийн мэдээ хэсэгт <strong>Хонины нэхийг хэрхэн гоё болгодог вэ?</strong> мэдээг <strong>images/news1.jpg</strong> thumbnail-тай нэмсэн. Картаас <strong>Дэлгэрэнгүй</strong> дарж ороход <strong>news-sheepskin-video.html</strong> хуудсан дээр Facebook Reel видео тоглоно.</p>
+        <p class="hint">Нүүр хуудасны мэдээ хэсэг desktop дээр 3 багана, mobile дээр 1 багана layout-тай болсон.</p>
+        <p class="hint">Нүүр дээр мэдээний зураг дээр дархад мөн адил дэлгэрэнгүй хуудас руу орно.</p>
+        <p class="hint">Цэвэрлэгээний заавар, Бидний тухай, мөн мэдээний дэлгэрэнгүй хуудсууд дээр MN/EN хэл солих товч идэвхжсэн.</p>
+        <p id="news-summary-text" class="summary-text"></p>
+        <div id="news-list" class="list"></div>
+      </section>
+
+      <section class="card">
+        <h2>Footer мэдээлэл</h2>
+        <form id="settings-form" class="form-grid">
+          <label>Зорилгын текст<textarea id="mission-text-input" rows="3"></textarea></label>
+          <label>Хаяг<textarea id="address-text-input" rows="3"></textarea></label>
+          <label>Утас<input id="phone-text-input"></label>
+          <label>Map Embed URL<input id="map-url-input"></label>
+          <button type="submit">Footer хадгалах</button>
+        </form>
+        <p class="hint">Нүүр хуудасны холбоо барих хэсгийн доор FB, IG, WhatsApp, YouTube icon-ууд харагдана.</p>
+        <p class="hint">FB/IG холбоос нь header дээрхтэй ижил URL ашиглаж байна.</p>
+      </section>
+
+      <section class="card">
+        <h2>Цэвэрлэгээний заавар</h2>
+        <p>Цэвэрлэгээний заавар нь тусдаа care.html хуудсанд байрладаг ба дизайн шинэчлэгдсэн.</p>
+        <p>2-р медиа блок дээр зураг баруун, текст зүүн байрлалтай болсон (desktop).</p>
+        <p>2-р медиа блокийн зураг <strong>images/PETCOMS.jpg</strong> болгож шинэчилсэн.</p>
+        <p>Хурдан шалгах холбоос: <a href="care.html" target="_blank" rel="noopener noreferrer">care.html</a></p>
+      </section>
+
+      <section class="card">
+        <h2>Бидний тухай</h2>
+        <p>"Бидний тухай" нь тусдаа about.html хуудсанд байрладаг.</p>
+        <p>Эхний болон 2-р зураг/текст блокийн түвшинг ижил болгож тэнцүүлсэн.</p>
+        <p>"Бидний зорилго" хэсгийн жагсаалтыг нэг мөр текст болгон шинэчилсэн.</p>
+        <p>MN/EN солих товч нь <strong>about</strong> болон <strong>about.html</strong> хоёр хаяг дээр хоёуланд нь ажиллана.</p>
+        <p>Хурдан шалгах холбоос: <a href="about.html" target="_blank" rel="noopener noreferrer">about.html</a></p>
+      </section>
+
+      <section class="card">
+        <h2>Аксессуар шинэчлэлт</h2>
+        <p>Аксессуар ангилалд <strong>Mousepad</strong> бүтээгдэхүүн нэмэгдсэн (зураг: <strong>images/mousepad.jpg</strong>).</p>
+        <p><strong>Mousepad</strong> мэдээлэл шинэчлэгдсэн: "Бугуйн зөөлөвчтэй Mousepad", үнэ 25,000₮, хонины нэхий + үхрийн шир материалын тайлбар нэмсэн.</p>
+        <p><strong>Mousepad</strong> дэлгэрэнгүй хуудас нь <strong>Машины дугаар</strong>-тай ижил showcase загварт (гарчиг + үнэ + bullet) шилжсэн.</p>
+        <p><strong>Luggage tag</strong> мэдээлэл шинэчлэгдсэн: үнэ 11,000₮, хонины нэхий чимэглэл, аялалд ачаанаас ялгах тайлбарууд нэмсэн (showcase загварт).</p>
+        <p><strong>Гэр таваг</strong> бүтээгдэхүүний gallery-г <strong>ger1.jpg</strong>, <strong>ger2.jpg</strong>, <strong>ger3.jpg</strong> (images/small round/accessory) болгож шинэчилсэн.</p>
+        <p><strong>Гэр таваг</strong> үнэ нь олон мөрөөр харагдана: "Суурийн диаметр:" + 14см-66,000₮, 18см-88,000₮, 24см-110,000₮.</p>
+        <p>Бүтээгдэхүүний үнэ хэсгийн UI-г зөөлөн карт загварт шилжүүлж, бор том bold фонтыг багасган цэвэр харагдуулсан.</p>
+        <p>Хэрэглэгчийн сайт дээр "Зураг оруулах / Нэмэлт тайлбар" customization блокийг харуулахгүй болгосон.</p>
+        <p>Шалгах холбоос: <a href="category.html?cat=aksesuar" target="_blank" rel="noopener noreferrer">category.html?cat=aksesuar</a></p>
+      </section>
+
+      <section class="card">
+        <h2>Static Pages i18n</h2>
+        <p>static-pages-i18n.js update хийгдсэн: extension-гүй зам (ж: <strong>/about</strong>, <strong>/care</strong>) дээр зөв хуудсаа таньж MN/EN орчуулгыг дуудах болсон.</p>
+      </section>
+
+      <section class="card">
+        <h2>Brand Logo шинэчлэлт</h2>
+        <p>Header дээрх BUUVEI BRAND бичвэрийг <strong>Mogul Cricket</strong> font-р харуулах тохиргоо хийсэн.</p>
+        <p>Бичвэрийн урд <strong>WEBB</strong> зураг нэмсэн (images/WEBB.png).</p>
+      </section>
+
+      <section class="card">
+        <h2>Header Navigation</h2>
+        <p>Desktop болон mobile дээр хоёуланд нь <strong>Search</strong> button харагдана.</p>
+        <p>Mobile дээр <strong>Хэл солих</strong> товч <strong>Search</strong>-ийн өмнө харагдана.</p>
+        <p>Mobile дээр <strong>Hamburger</strong> зүүн талд, <strong>Search</strong> баруун талд байрлана.</p>
+        <p>Mobile дээр <strong>Hamburger</strong>, <strong>Logo</strong>, <strong>Search</strong> 3 нь нэг төвшинд зэрэгцэж харагдана.</p>
+        <p>Mobile дээр <strong>Logo</strong> яг төвд хадгалагдаж, баруун талын товчнууд нэмэгдсэн ч хазайхгүй.</p>
+        <p>Search icon нь зөвхөн <strong>PNG</strong> зураг ашиглаж харагдана.</p>
+        <p>Hamburger цэсэнд зөвхөн <strong>Бидний тухай</strong>, <strong>Цэвэрлэгээний заавар</strong>, <strong>Холбоо барих</strong> 3 хэсэг харагдана.</p>
+        <p>Desktop дээр утасны дугаар, Facebook, Instagram холбоосууд харагдана.</p>
+      </section>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
