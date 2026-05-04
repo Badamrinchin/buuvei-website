@@ -1263,12 +1263,6 @@ html {
     grid-template-rows: 1fr;
   }
 
-  .panel-4,
-  .panel-5,
-  .panel-6 {
-    display: none;
-  }
-
   .hero-content {
     padding: 0 12px 12px;
   }

@@ -381,6 +381,30 @@
     window.localStorage.setItem('site-language', safeLang);
   }
 
+  function setupMobilePanelCycle() {
+    if (window.innerWidth > 768) return;
+    const panels = document.querySelectorAll('#hero-strip .panel');
+    if (panels.length < 4) return;
+
+    const groupSize = 3;
+    let current = 0;
+    const totalGroups = Math.ceil(panels.length / groupSize);
+
+    function showGroup(groupIndex) {
+      panels.forEach(function(p, i) {
+        const inGroup = i >= groupIndex * groupSize && i < (groupIndex + 1) * groupSize;
+        p.style.display = inGroup ? '' : 'none';
+      });
+    }
+
+    showGroup(0);
+
+    setInterval(function() {
+      current = (current + 1) % totalGroups;
+      showGroup(current);
+    }, 3000);
+  }
+
   function setupCardAnimation() {
     const cards = document.querySelectorAll('.card');
     if (!cards.length) {
@@ -418,6 +442,7 @@
     const cfg = window.SITE_CONFIG || {};
     if (!cfg.supabaseUrl || !cfg.supabaseAnonKey || !window.supabase) {
       setupCardAnimation();
+      setupMobilePanelCycle();
       return;
     }
 
@@ -456,6 +481,7 @@
       console.error('Failed to load Supabase content:', err);
     } finally {
       setupCardAnimation();
+      setupMobilePanelCycle();
     }
   }
 
