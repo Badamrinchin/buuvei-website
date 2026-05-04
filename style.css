@@ -566,6 +566,10 @@ html {
   background-image: url('images/panel_2.jpg');
 }
 
+.panel-6 {
+  background-image: url('images/panel_5.jpg');
+}
+
 
 .hero-content {
   position: absolute;
