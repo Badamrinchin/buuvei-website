@@ -383,36 +383,57 @@
 
   function setupMobilePanelCycle() {
     if (window.innerWidth > 768) return;
-    const panels = document.querySelectorAll('#hero-strip .panel');
+    const panels = Array.from(document.querySelectorAll('#hero-strip .panel'));
     if (panels.length < 4) return;
 
     const groupSize = 3;
-    let current = 0;
     const totalGroups = Math.ceil(panels.length / groupSize);
+    let current = 0;
+    const fadeDuration = 400;
+    const staggerDelay = 150;
+    const holdDuration = 3000;
 
     panels.forEach(function(p) {
-      p.style.transition = 'opacity 0.6s ease';
+      p.style.transition = 'opacity ' + (fadeDuration / 1000) + 's ease';
+      p.style.opacity = '0';
+      p.style.display = 'none';
     });
 
-    function showGroup(groupIndex) {
-      panels.forEach(function(p, i) {
-        const inGroup = i >= groupIndex * groupSize && i < (groupIndex + 1) * groupSize;
-        if (inGroup) {
-          p.style.display = '';
-          setTimeout(function() { p.style.opacity = '1'; }, 10);
-        } else {
-          p.style.opacity = '0';
-          setTimeout(function() { p.style.display = 'none'; }, 600);
-        }
-      });
+    function getGroup(index) {
+      const start = index * groupSize;
+      return panels.slice(start, start + groupSize);
     }
 
-    showGroup(0);
+    function fadeInGroup(group, done) {
+      group.forEach(function(p, i) {
+        p.style.display = '';
+        setTimeout(function() {
+          p.style.opacity = '1';
+        }, 10 + i * staggerDelay);
+      });
+      setTimeout(done, 10 + (group.length - 1) * staggerDelay + fadeDuration);
+    }
+
+    function fadeOutGroup(group, done) {
+      group.forEach(function(p, i) {
+        setTimeout(function() {
+          p.style.opacity = '0';
+          setTimeout(function() { p.style.display = 'none'; }, fadeDuration);
+        }, i * staggerDelay);
+      });
+      setTimeout(done, (group.length - 1) * staggerDelay + fadeDuration);
+    }
+
+    fadeInGroup(getGroup(0), function() {});
 
     setInterval(function() {
+      var outGroup = getGroup(current);
       current = (current + 1) % totalGroups;
-      showGroup(current);
-    }, 3000);
+      var inGroup = getGroup(current);
+      fadeOutGroup(outGroup, function() {
+        fadeInGroup(inGroup, function() {});
+      });
+    }, holdDuration);
   }
 
   function setupCardAnimation() {
