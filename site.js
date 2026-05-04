@@ -390,28 +390,41 @@
 
     const groupSize = 3;
     const totalGroups = Math.ceil(panels.length / groupSize);
-    let current = 0;
 
-    // Strip-г sliding container болгох
-    heroStrip.style.gridTemplateColumns = 'repeat(' + panels.length + ', 1fr)';
-    heroStrip.style.width = (panels.length / groupSize * 100) + '%';
+    // Эхний groupSize панелийн клон нэмж infinite loop хийнэ
+    for (var c = 0; c < groupSize; c++) {
+      var clone = panels[c].cloneNode(true);
+      heroStrip.appendChild(clone);
+    }
+
+    const totalCols = panels.length + groupSize;
+    heroStrip.style.gridTemplateColumns = 'repeat(' + totalCols + ', 1fr)';
+    heroStrip.style.width = (totalCols / groupSize * 100) + '%';
     heroStrip.style.transition = 'transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)';
     heroStrip.style.transform = 'translateX(0)';
 
-    // Эх container overflow хаах
     const heroEl = heroStrip.parentElement;
     heroEl.style.overflow = 'hidden';
     heroEl.style.position = 'relative';
 
-    panels.forEach(function(p) {
-      p.style.display = '';
-      p.style.opacity = '1';
-    });
+    let current = 0;
 
     setInterval(function() {
-      current = (current + 1) % totalGroups;
-      const offset = -(current * (100 / totalGroups));
+      current++;
+      var offset = -(current * (100 / totalCols) * groupSize);
       heroStrip.style.transform = 'translateX(' + offset + '%)';
+
+      // Клон дээр хүрэхэд transition-гүйгээр буцаана
+      if (current === totalGroups) {
+        setTimeout(function() {
+          heroStrip.style.transition = 'none';
+          heroStrip.style.transform = 'translateX(0)';
+          current = 0;
+          setTimeout(function() {
+            heroStrip.style.transition = 'transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)';
+          }, 50);
+        }, 700);
+      }
     }, 3000);
   }
 
