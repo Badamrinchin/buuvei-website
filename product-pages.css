@@ -411,16 +411,6 @@ body {
   border: 1px solid #e2d6c5;
 }
 
-.installment-logos .storepay-logo {
-  transform: scale(1.2);
-  transform-origin: center;
-}
-
-.installment-logos .pocket-logo {
-  transform: scale(1);
-  transform-origin: center;
-}
-
 .showcase-reviews {
   margin: 0 0 14px;
   font-size: 16px;
