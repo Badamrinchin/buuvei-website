@@ -377,12 +377,7 @@
         kicker: 'Сүүлийн мэдээ',
         h1: 'Монголын хамгийн том нэхий олбогийг бид урлалаа.',
         intro: 'Үнэнч хэрэглэгчийн захиалгын дагуу 7*10м хэмжээтэй буюу 70мкв нэхий олбогийг 14 хоногийн хугацаанд урлалаа.',
-        sections: [
-          {
-            h2: 'Видео тайлбар',
-            p: 'Дээрх Facebook Reel видеог тоглуулж нэхий боловсруулах үе шат, эцсийн харагдах байдал хэрхэн бүрдэж байгааг үзэх боломжтой.'
-          }
-        ]
+        sections: []
       },
       en: {
         title: 'Mongolia\'s Largest Sheepskin Rug',
@@ -392,12 +387,7 @@
         kicker: 'Latest News',
         h1: 'Mongolia\'s Largest Sheepskin Rug',
         intro: 'A 7*10m size sheepskin rug.',
-        sections: [
-          {
-            h2: 'Video Overview',
-            p: 'Play the Facebook Reel above to see the processing steps and the final look of the sheepskin product.'
-          }
-        ]
+        sections: []
       }
     }
   };

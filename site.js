@@ -27,7 +27,7 @@
         title_mn: 'Монголын хамгийн том нэхий олбог',
         title_en: 'Mongolia\'s Largest Sheepskin Rug',
         date_text: '2026.05.14',
-        summary_mn: '7*10м-ийн хэмжээтэй хонины нэхий олбог.',
+        summary_mn: 'Бид 7x10м-ийн хэмжээтэй хонины нэхий олбог урлалаа.',
         summary_en: 'A 7*10m size sheepskin rug.',
         image_url: 'images/news3.jpg',
         link_url: 'news-sheepskin-video-reel.html'
