@@ -95,5 +95,26 @@
 
 <script src="static-pages-i18n.js?v=20260423-5"></script>
 
+<!-- Facebook Messenger Customer Chat -->
+<div id="fb-root"></div>
+<div class="fb-customerchat"
+  attribution="biz_inbox"
+  page_id="100063544605151"
+  theme_color="#8B4513"
+  logged_in_greeting="Сайн байна уу! Танд хэрхэн туслах вэ?"
+  logged_out_greeting="Сайн байна уу! Танд хэрхэн туслах вэ?"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({ xfbml: true, version: 'v19.0' });
+  };
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/mn_MN/sdk/xfbml.customerchat.js';
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
 </body>
 </html>
