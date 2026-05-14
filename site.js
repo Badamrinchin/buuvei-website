@@ -24,12 +24,12 @@
     ],
     news: [
       {
-        title_mn: 'Хонины нэхийг хэрхэн гоё болгодог вэ? (Шинэ видео)',
-        title_en: 'How Is Sheepskin Beautified? (New Video)',
+        title_mn: 'Монголын хамгийн том нэхий олбог',
+        title_en: 'Mongolia\'s Largest Sheepskin Rug',
         date_text: '2026.05.14',
-        summary_mn: 'Facebook Reel: нэхий боловсруулах шинэ видео.',
-        summary_en: 'Facebook Reel: a new video on sheepskin processing.',
-        image_url: 'images/news1.jpg',
+        summary_mn: '7*10м-ийн хэмжээтэй хонины нэхий олбог.',
+        summary_en: 'A 7*10m size sheepskin rug.',
+        image_url: 'images/NEWS2.jpg',
         link_url: 'news-sheepskin-video-reel.html'
       },
       {

@@ -370,13 +370,13 @@
     },
     'news-sheepskin-video-reel.html': {
       mn: {
-        title: 'Хонины нэхийг хэрхэн гоё болгодог вэ? (Шинэ видео)',
+        title: 'Монголын хамгийн том нэхий олбог',
         navHome: 'Нүүр хуудас',
         navCare: 'Цэвэрлэгээний заавар',
         backToSite: 'Сайт руу буцах',
         kicker: 'Сүүлийн мэдээ',
-        h1: 'Хонины нэхийг хэрхэн гоё болгодог вэ? (Шинэ видео)',
-        intro: 'Бид хонины нэхийг хэрхэн боловсруулж, гоёмсог өнгө төрхтэй бүтээгдэхүүн болгодгийг энэхүү шинэ видеогоор үзээрэй.',
+        h1: 'Монголын хамгийн том нэхий олбог',
+        intro: '7*10м-ийн хэмжээтэй хонины нэхий олбог.',
         sections: [
           {
             h2: 'Видео тайлбар',
@@ -385,13 +385,13 @@
         ]
       },
       en: {
-        title: 'How Is Sheepskin Beautified? (New Video)',
+        title: 'Mongolia\'s Largest Sheepskin Rug',
         navHome: 'Home',
         navCare: 'Care Guide',
         backToSite: 'Back to Site',
         kicker: 'Latest News',
-        h1: 'How Is Sheepskin Beautified? (New Video)',
-        intro: 'Watch this new video to see how we process and refine sheepskin into a stylish finished product.',
+        h1: 'Mongolia\'s Largest Sheepskin Rug',
+        intro: 'A 7*10m size sheepskin rug.',
         sections: [
           {
             h2: 'Video Overview',
