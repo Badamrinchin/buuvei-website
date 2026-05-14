@@ -24,6 +24,15 @@
     ],
     news: [
       {
+        title_mn: 'Хонины нэхийг хэрхэн гоё болгодог вэ? (Шинэ видео)',
+        title_en: 'How Is Sheepskin Beautified? (New Video)',
+        date_text: '2026.05.14',
+        summary_mn: 'Facebook Reel: нэхий боловсруулах шинэ видео.',
+        summary_en: 'Facebook Reel: a new video on sheepskin processing.',
+        image_url: 'images/news1.jpg',
+        link_url: 'news-sheepskin-video-reel.html'
+      },
+      {
         title_mn: 'Хонины нэхийний ач тус',
         title_en: 'Benefits of Sheepskin',
         date_text: '2026.03.28',
@@ -191,6 +200,22 @@
     defaults.products.forEach((baseItem) => {
       const key = (baseItem.title_mn || '').trim() + '|' + (baseItem.title_en || '').trim();
       if (!hasByTitle.has(key)) {
+        incoming.push(baseItem);
+      }
+    });
+
+    return incoming;
+  }
+
+  function mergeNewsWithDefaults(rows) {
+    const incoming = Array.isArray(rows) ? rows.slice() : [];
+    const hasByLink = new Set(
+      incoming.map((item) => String(item.link_url || '').trim().toLowerCase()).filter(Boolean)
+    );
+
+    defaults.news.forEach((baseItem) => {
+      const key = String(baseItem.link_url || '').trim().toLowerCase();
+      if (!key || !hasByLink.has(key)) {
         incoming.push(baseItem);
       }
     });
@@ -486,7 +511,7 @@
         state.products = mergeProductsWithDefaults(productRes.data);
       }
       if (!newsRes.error && newsRes.data) {
-        state.news = newsRes.data;
+        state.news = mergeNewsWithDefaults(newsRes.data);
       }
       if (!settingsRes.error && settingsRes.data) {
         state.settings = settingsRes.data;
