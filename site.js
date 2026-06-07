@@ -243,18 +243,22 @@
       const title = escapeHtml(displayTitle);
       const rawImage = item.image_url || item.image || '';
       const isMainSofaCover = /Буйдангийн бүтээлэг|Sofa Cover/i.test(displayTitle) || /Буйдангийн бүтээлэг|Sofa Cover/i.test(item.title || '');
+      const isCowhideSoldOut = /Үхрийн\s*(шир|хөм)|Cowhide/i.test(displayTitle) || /Үхрийн\s*(шир|хөм)|Cowhide/i.test(item.title || '');
       const resolvedImage = isMainSofaCover ? 'images/18060.png' : (rawImage || 'images/nehii-olbog.jpg');
       const image = escapeHtml(resolvedImage);
       const badgeValue = pickLocalized(item, 'badge_mn', 'badge_en') || item.badge || '';
       const badge = badgeValue ? '<span class="badge">' + escapeHtml(badgeValue) + '</span>' : '';
       const slug = getCategorySlugByTitle(displayTitle) || getCategorySlugByTitle(item.title || '') || getCategorySlugFallback(item);
       const link = slug ? ('category.html?cat=' + encodeURIComponent(slug)) : '#';
+      const soldOutClass = isCowhideSoldOut ? ' is-sold-out' : '';
+      const soldOutBadge = isCowhideSoldOut ? '<span class="sold-out-label">Дууссан</span>' : '';
 
       return (
-        '<div class="card">' +
+        '<div class="card' + soldOutClass + '">' +
           '<a href="' + link + '" class="product-card-link" aria-label="' + title + ' ' + escapeHtml(copy.categoryAriaSuffix) + '">' +
             '<div class="card-media">' +
               '<img src="' + image + '" alt="' + title + '">' +
+              soldOutBadge +
               '<h3>' + title + '</h3>' +
             '</div>' +
           '</a>' +

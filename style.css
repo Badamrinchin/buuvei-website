@@ -845,6 +845,15 @@ html {
   overflow: hidden;
 }
 
+.card.is-sold-out .card-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 14, 9, 0.2);
+  pointer-events: none;
+  z-index: 1;
+}
+
 .product-card-link {
   display: block;
   text-decoration: none;
@@ -857,6 +866,28 @@ html {
   object-fit: cover;
   display: block;
   transition: transform 0.3s ease;
+}
+
+.card.is-sold-out img {
+  filter: blur(1.6px);
+}
+
+.sold-out-label {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  background: rgba(255, 255, 255, 0.9);
+  color: #2f251a;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(47, 37, 26, 0.2);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
 }
 
 .card h3 {
