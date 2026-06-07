@@ -69,6 +69,7 @@ body {
 }
 
 .poster-card {
+  position: relative;
   background: #f6f2ea;
   border: 1px solid #ddd4c8;
   border-radius: 12px;
@@ -88,6 +89,37 @@ body {
   aspect-ratio: 4 / 3;
   object-fit: cover;
   display: block;
+}
+
+.poster-card.is-sold-out img {
+  filter: blur(1.6px);
+}
+
+.poster-card.is-sold-out::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(16, 12, 8, 0.22);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.poster-card .sold-out-label {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.9);
+  color: #2f251a;
+  border: 1px solid rgba(47, 37, 26, 0.2);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 8px 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
 }
 
 .poster-card h3 {

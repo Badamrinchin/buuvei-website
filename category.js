@@ -12,6 +12,7 @@
     mn: {
       backHome: '← Нүүр хуудас',
       itemSuffix: 'бүтээгдэхүүн',
+      soldOutLabel: 'Дууссан',
       notFoundTitle: 'Ангилал олдсонгүй',
       notFoundText: 'Уучлаарай, энэ ангиллын мэдээлэл олдсонгүй. Нүүр хуудас руу буцаж дахин сонгоно уу.',
       toggleAria: 'Англи хэл рүү шилжүүлэх'
@@ -19,6 +20,7 @@
     en: {
       backHome: '← Home',
       itemSuffix: 'items',
+      soldOutLabel: 'Sold out',
       notFoundTitle: 'Category Not Found',
       notFoundText: 'Sorry, this category could not be found. Please return to the home page and try again.',
       toggleAria: 'Switch to Mongolian'
@@ -107,10 +109,14 @@
       const image = escapeHtml(item.image);
       const href = 'product-detail.html?cat=' + encodeURIComponent(slug) + '&item=' + encodeURIComponent(item.id);
       const itemId = escapeHtml(item.id);
+      const isSoldOut = item.soldOut === true;
+      const soldOutClass = isSoldOut ? ' is-sold-out' : '';
+      const soldOutLabel = isSoldOut ? '<span class="sold-out-label">' + escapeHtml(copy.soldOutLabel) + '</span>' : '';
 
       return (
-        '<a class="poster-card" data-slug="' + escapeHtml(slug) + '" data-item-id="' + itemId + '" href="' + href + '">' +
+        '<a class="poster-card' + soldOutClass + '" data-slug="' + escapeHtml(slug) + '" data-item-id="' + itemId + '" href="' + href + '">' +
           '<img src="' + image + '" alt="' + name + '">' +
+          soldOutLabel +
           '<h3>' + name + '</h3>' +
         '</a>'
       );
