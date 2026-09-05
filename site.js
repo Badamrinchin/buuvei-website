@@ -71,7 +71,7 @@
       mapHeading: 'Google Map байршил',
       phoneLabel: 'Утас: ',
       hoursLabel: 'Цагийн хуваарь',
-      hoursValue: 'Өдөр бүр 11:00-19:00 цаг',
+      hoursValue: 'Өдөр бүр 10:00-20:00 цаг',
       readMore: 'Дэлгэрэнгүй →',
       menuAria: 'Цэс нээх',
       categoryAriaSuffix: 'ангилал руу орох'
@@ -87,7 +87,7 @@
       mapHeading: 'Google Map Location',
       phoneLabel: 'Phone: ',
       hoursLabel: 'Opening Hours',
-      hoursValue: 'Every day 11:00-19:00',
+      hoursValue: 'Every day 10:00-20:00',
       readMore: 'Read more →',
       menuAria: 'Open menu',
       categoryAriaSuffix: 'open category'
