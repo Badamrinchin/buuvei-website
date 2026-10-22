@@ -314,16 +314,16 @@
           image: 'images/seatcover.jpg',
           gallery: ['images/seatcover.jpg', 'images/Frontcarseatgray.jpg'],
           useShowcase: true,
-          price: '165,000₮',
-          price_en: '165,000₮',
+          price: '181,000₮',
+          price_en: '181,000₮',
           sizes: ['1ш'],
           colors: ['Цагаан', 'Бор', 'Саарал'],
           item_bullet1: 'Хонины нэхий суудлын бүрээс нь халуунд чийг татахгүй, хүйтэнд хайрахгүй давуу талтай.',
           item_bullet1_en: 'The sheepskin seat cover does not absorb moisture in heat and does not feel harsh in cold weather.',
           item_bullet2: 'Нарийн ноост меронус хонины нэхийгээр урлав.',
           item_bullet2_en: 'Made from fine merino sheepskin wool.',
-          description: 'Урд суудлын бүрээс. 1ш – 165,000төг. Өнгө: Цагаан, бор, саарал. Хонины нэхий суудлын бүрээс нь халуунд чийг татахгүй, хүйтэнд хайрахгүй давуу талтай.',
-          description_en: 'Front Seat Cover. 1 pc - 165,000 MNT. Color: White, Brown, Gray. The sheepskin seat cover does not absorb moisture in heat and does not feel harsh in cold weather.'
+          description: 'Урд суудлын бүрээс. 1ш – 181,000төг. Өнгө: Цагаан, бор, саарал. Хонины нэхий суудлын бүрээс нь халуунд чийг татахгүй, хүйтэнд хайрахгүй давуу талтай.',
+          description_en: 'Front Seat Cover. 1 pc - 181,000 MNT. Color: White, Brown, Gray. The sheepskin seat cover does not absorb moisture in heat and does not feel harsh in cold weather.'
         },
         {
           id: 'car-seat-full',
@@ -331,8 +331,8 @@
           name_en: 'Full Backrest Cover',
           image: 'https://via.placeholder.com/1200x900/ece3d3/2f2922?text=Full+Backrest+Car+Seat+Cover',
           useShowcase: true,
-          price: '150,000₮',
-          price_en: '150,000 MNT',
+          price: '205,000₮',
+          price_en: '205,000 MNT',
           sizes: ['140*60см'],
           item_bullet1: 'Зөвхөн суудлын доод хэсгийг бүрхэнэ.',
           item_bullet1_en: 'Covers only the lower seat area.',
@@ -342,8 +342,8 @@
           item_bullet3_en: 'The sheepskin seat cover does not absorb moisture in heat and does not feel harsh in cold weather.',
           item_bullet4: 'Нарийн ноост меронус хонины нэхийгээр урлав.',
           item_bullet4_en: 'Made from fine merino sheepskin wool.',
-          description: 'Үнэ: 150,000төг. Хэмжээ: 140*60см. Зөвхөн суудлын доод хэсгийг бүрхэнэ. Бүрээс тогтоогч резинтэй. Хонины нэхий суудлын бүрээс нь халуунд чийг татахгүй, хүйтэнд хайрахгүй давуу талтай. Нарийн ноост меронус хонины нэхийгээр урлав.',
-          description_en: 'Price: 150,000 MNT. Size: 140*60 cm. Covers only the lower seat area and includes elastic holders to keep it fixed. The sheepskin seat cover does not absorb moisture in heat and does not feel harsh in cold weather. Made from fine merino sheepskin wool.'
+          description: 'Үнэ: 205,000төг. Хэмжээ: 140*60см. Зөвхөн суудлын доод хэсгийг бүрхэнэ. Бүрээс тогтоогч резинтэй. Хонины нэхий суудлын бүрээс нь халуунд чийг татахгүй, хүйтэнд хайрахгүй давуу талтай. Нарийн ноост меронус хонины нэхийгээр урлав.',
+          description_en: 'Price: 205,000 MNT. Size: 140*60 cm. Covers only the lower seat area and includes elastic holders to keep it fixed. The sheepskin seat cover does not absorb moisture in heat and does not feel harsh in cold weather.'
         }
       ]
     },
